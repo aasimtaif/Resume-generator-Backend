@@ -6,7 +6,7 @@ const { signUp, login,authenticationToken } = require('./controllers/UserControl
 const port = 2000
 const app = express()
 const cors = require("cors");
-require("dotenv").config();
+require("dotenv").config({path: "./vars/.env"});
 app.use(cors())
 app.use(express.json())
 
