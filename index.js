@@ -30,7 +30,7 @@ app.get('/resume/user/:userId', authenticationToken, async (req, res) => {
 app.get('/resume/:resumeId', authenticationToken, async (req, res) => {
     const { resumeId } = req.params
     const resume = await formModel.find({_id:resumeId})
-    console.log(resume.length)
+    // console.log(resume.length)
     res.send(resume)
 
 })
