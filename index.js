@@ -35,7 +35,9 @@ app.get('/resume/:resumeId', authenticationToken, async (req, res) => {
 
 })
 
-
+app.get('/',(req, res) => {
+    res.send("hello")
+})
 
 app.post('/signup', signUp)
 app.post('/login', login)
