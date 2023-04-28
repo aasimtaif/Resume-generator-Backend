@@ -5,6 +5,7 @@ const formSchema = new mongoose.Schema({
     lastName: String,
     github: String,
     linkedIn: String,
+    jobTitle: String,
     phoneNo: Number,
     email: String,
     user: {
