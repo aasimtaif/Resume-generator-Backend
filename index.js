@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true, }));
 
 const DB = process.env.MONGOBD_DATABASE
 
-mongoose.connect(`${process.env.MONGOBD_DATABASE}`, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(`mongodb+srv://Aasimtaif:QFj20irUFeq9HkNV@cluster0.meikrd2.mongodb.net/test`, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log("Connected to Database")
 }).catch(err => console.log(err, "error on connection"))
 
