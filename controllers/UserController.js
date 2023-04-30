@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 require("dotenv").config({path: "./vars/.env"});
 // require("dotenv").config();
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = "mongodb+srv://Aasimtaif:QFj20irUFeq9HkNV@cluster0.meikrd2.mongodb.net/test"
+const SECRET_KEY = process.env.SECRET_KEY
 
 
 const signUp = async (req, res) => {
