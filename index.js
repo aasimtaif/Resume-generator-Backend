@@ -27,13 +27,24 @@ app.get('/resume/user/:userId', authenticationToken, async (req, res) => {
 
 })
 
-app.get('/resume/:resumeId', authenticationToken, async (req, res) => {
-    const { resumeId } = req.params
-    const resume = await formModel.find({ _id: resumeId })
-    // console.log(resume.length)
-    res.send(resume)
+app.route('/resume/:resumeId')
+    .get(authenticationToken, async (req, res) => {
+        const { resumeId } = req.params
+        const resume = await formModel.find({ _id: resumeId })
+        // console.log(resume.length)
+        res.send(resume)
+    })
+    .delete(authenticationToken, async (req, res) => {
+        const { resumeId } = req.params
+        const resume = await formModel.findOneAndDelete({ _id: resumeId })
+        console.log(resumeId)
+        res.status(200).json({message:"Deleted resume Successfully"})
+    })
 
-})
+
+
+
+
 
 app.get('/', (req, res) => {
     res.send("hello")

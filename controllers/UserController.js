@@ -36,7 +36,7 @@ const login = async (req, res) => {
 
         const existingUser = await userModel.findOne({ email: email })
         if (!existingUser) {
-            return res.status(400).json({ messsage: "email not registered" })
+            return res.status(400).json({ message:  'email not registered'})
         }
         const matchPassword = await bcrypt.compare(password, existingUser.password)
         if (!matchPassword) {
