@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const formModel = require('./models/data.model')
 const bodyParser = require('body-parser');
+const axios = require('axios')
 const { signUp, login, authenticationToken } = require('./controllers/UserController')
 const port = 2000
 const app = express()
@@ -38,7 +39,7 @@ app.route('/resume/:resumeId')
         const { resumeId } = req.params
         const resume = await formModel.findOneAndDelete({ _id: resumeId })
         console.log(resumeId)
-        res.status(200).json({message:"Deleted resume Successfully"})
+        res.status(200).json({ message: "Deleted resume Successfully" })
     })
 
 
@@ -46,9 +47,6 @@ app.route('/resume/:resumeId')
 
 
 
-app.get('/', (req, res) => {
-    res.send("hello")
-})
 
 app.post('/signup', signUp)
 app.post('/login', login)
@@ -65,11 +63,19 @@ app.post('/form', authenticationToken, (req, res) => {
     res.send(req.body)
 })
 
+setInterval(() => {
+    axios.get('https://resume-generator-backend.onrender.com') 
+        .then(() => console.log('Ping successful'))
+        .catch((err) => console.error('Ping failed:', err));
+}, 7 * 60 * 1000);
 
+
+app.get('/', (req, res) => {
+    res.send("hello")
+})
 
 
 app.listen(port, () => {
     console.log("listening on port" + port)
 })
 
-//QFj20irUFeq9HkNV
